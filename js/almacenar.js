@@ -5,6 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var contenedorLista = document.getElementById("contenedor");
     var limpiarButton = document.getElementById("limpiar");
 
+    let arreglo = localStorage.getItem("Item");
+
+    if (arreglo) {
+        arreglo = JSON.parse(arreglo);
+        for (let i = 0; i < arreglo.length; i++) {
+            var listItem = document.createElement("li");
+            listItem.textContent = arreglo[i];
+            listItem.className = "list-group-item";
+            contenedorLista.appendChild(listItem);
+        }
+    }
+
     function agregarItem() {
         var nuevoItem = itemInput.value;
         if (nuevoItem.trim() !== "") {
